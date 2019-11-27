@@ -1,0 +1,25 @@
+{
+  "name": "workouttracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabrome/WorkoutTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pabrome/WorkoutTracker/issues"
+  },
+  "homepage": "https://github.com/pabrome/WorkoutTracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12",
+    "path": "^0.12.7"
+  }
+}
