@@ -7,20 +7,21 @@ async function loadAllWorkouts () {
     $("#workoutContents").empty();
     //Determine if workouts exist
     if (workouts.length == 0) {
+        editWorkoutList()
         //No workouts exist, create input page
         // $("#workoutContents").css("font-size", "12px").text("You have no active workouts. Please create a new workout.");
-        $("<input>").attr({
-            id: "newRoutineInput",
-            class: "col-10",
-            placeholder: "Insert new routine"
-        }).appendTo(`#workoutContents`);
-        $("<button>").attr({
-            class: "input-group-text col-1",
-            id: "newRoutineButton"
-        }).text("+").insertAfter("#newRoutineInput");
-        $("<button>").attr("id","doneRoutine").addClass("my-2").text("Done").insertAfter("#newRoutineButton")
-        $("#workoutEditButton").hide();
-        $("#newRoutineButton").on("click", createWorkout);
+        // $("<input>").attr({
+        //     id: "newRoutineInput",
+        //     class: "col-10",
+        //     placeholder: "Insert new routine"
+        // }).appendTo(`#workoutContents`);
+        // $("<button>").attr({
+        //     class: "input-group-text col-1",
+        //     id: "newRoutineButton"
+        // }).text("+").insertAfter("#newRoutineInput");
+        // $("<button>").attr("id","doneRoutine").addClass("my-2").text("Done").insertAfter("#newRoutineButton")
+        // $("#workoutEditButton").hide();
+        // $("#newRoutineButton").on("click", createWorkout);
     }
     else {
         //Workouts exist, create workout list
@@ -66,6 +67,8 @@ async function createWorkout() {
         });
         $("#workoutError").remove()
         $(".removeRoutine").on("click", deleteWorkout);   
+        $("#doneRoutine").on("click", loadAllWorkouts);
+
     };
 };
 
@@ -92,7 +95,7 @@ async function editWorkoutList() {
     $("<input>").attr({
         id: "newRoutineInput",
         class: "col-10",
-        placeholder: "Insert new workout routine here"
+        placeholder: "Insert new routine"
     }).appendTo(`#workoutContents`);
     $("<button>").attr({
         class: "input-group-text col-1",
@@ -138,6 +141,7 @@ async function loadWorkout() {
 async function editWorkout() {
     //Check if currently in edit mode
     if ($("#insertRow").length == 0) {
+        console.log("begin edits")
         //Edit list to include "-" buttons
         $(".workouts").each( function() {
             $(this).removeClass("col-12");
@@ -164,6 +168,7 @@ async function editWorkout() {
 };
 
 async function addExercise() {
+    console.log("add")
     currentWorkout = $(".active").text();
     addExercise = $("#newExercise").val();
     workoutID = $(".workouts").length;
